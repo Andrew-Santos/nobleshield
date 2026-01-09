@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Orçamento - Noble Shield Security</title>
+
+    <link rel="shortcut icon" href="../ícone.svg" type="image/x-icon">
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <aside class="sidebar">
+            <div class="company-header">
+                <img src="./logo.png" alt="Noble Shield Security" class="company-logo">
+            </div>
+            
+            <!-- Navegação por abas -->
+            <nav class="tabs">
+                <button class="tab active" data-tab="dados">
+                    <i class="ph ph-user"></i>
+                    <span>Dados</span>
+                </button>
+                <button class="tab" data-tab="servicos">
+                    <i class="ph ph-list-checks"></i>
+                    <span>Serviços</span>
+                </button>
+                <button class="tab" data-tab="topicos">
+                    <i class="ph ph-article"></i>
+                    <span>Tópicos</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-scroll">
+                <!-- Conteúdo da aba Dados -->
+                <div id="dados-tab" class="tab-content active">
+                    <div class="form-group">
+                        <label class="form-label">Nome do Cliente</label>
+                        <input type="text" class="form-input" id="clientName" placeholder="Digite o nome do cliente">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Nome do Projeto</label>
+                        <input type="text" class="form-input" id="projectName" placeholder="Digite o nome do projeto">
+                    </div>
+                </div>
+
+                <!-- Conteúdo da aba Serviços -->
+                <div id="servicos-tab" class="tab-content">
+                    <div id="services-list" class="list-container"></div>
+                    <button class="btn btn-add" id="addServiceBtn">
+                        <i class="ph ph-plus"></i> Adicionar Serviço
+                    </button>
+                </div>
+
+                <!-- Conteúdo da aba Tópicos -->
+                <div id="topicos-tab" class="tab-content">
+                    <div id="topics-list" class="list-container"></div>
+                    <button class="btn btn-add" id="addTopicBtn">
+                        <i class="ph ph-plus"></i> Adicionar Tópico
+                    </button>
+                </div>
+            </div>
+
+            <!-- Botões de ação -->
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="downloadBtn" title="Download PDF">
+                    <i class="ph ph-download"></i>
+                </button>
+                <button class="btn btn-secondary" id="shareBtn" title="Compartilhar">
+                    <i class="ph ph-share-network"></i>
+                </button>
+                <button class="btn btn-danger" id="clearBtn" title="Limpar Tudo">
+                    <i class="ph ph-trash"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Área de preview -->
+        <main class="preview-container">
+            <div class="preview-controls">
+                <div class="preview-title">
+                    <i class="ph-fill ph-file-text"></i>
+                    <span>Visualização do Documento</span>
+                </div>
+            </div>
+            
+            <!-- Preview wrapper e A4 preview -->
+            <div class="preview-wrapper">
+                <div class="a4-preview" id="a4Preview">
+                    <!-- O conteúdo será renderizado aqui pelo JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Botão preview mobile -->
+            <div class="mobile-preview-button">
+                <button class="btn btn-success" id="mobilePreviewBtn">
+                    <i class="ph ph-eye"></i> Visualizar Documento
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de preview mobile -->
+    <div class="modal-overlay" id="mobilePreviewModal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Visualização do Documento</h3>
+                <button class="modal-close" id="closeModalBtn">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div id="modalPreview"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="data.js"></script>
+    <script src="ui.js"></script>
+    <script src="export.js"></script>
+</body>
+</html>
