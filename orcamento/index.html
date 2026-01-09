@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Orçamento - Noble Shield Security</title>
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="company-header">
+                <img src="./logo.png" alt="Noble Shield Security" class="company-logo">
+            </div>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('dados')">
+                    <i class="ph ph-user"></i> Dados
+                </button>
+                <button class="tab" onclick="switchTab('servicos')">
+                    <i class="ph ph-list-checks"></i> Serviços
+                </button>
+                <button class="tab" onclick="switchTab('topicos')">
+                    <i class="ph ph-article"></i> Tópicos
+                </button>
+            </div>
+
+            <div id="dados-tab" class="tab-content active">
+                <div class="form-group">
+                    <label class="form-label">Nome do Cliente</label>
+                    <input type="text" class="form-input" id="clientName" placeholder="Digite o nome do cliente">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Nome do Projeto</label>
+                    <input type="text" class="form-input" id="projectName" placeholder="Digite o nome do projeto">
+                </div>
+            </div>
+
+            <div id="servicos-tab" class="tab-content">
+                <div id="services-list"></div>
+                <button class="btn" onclick="addService()">
+                    <i class="ph ph-plus"></i> Adicionar Serviço
+                </button>
+            </div>
+
+            <div id="topicos-tab" class="tab-content">
+                <div id="topics-list"></div>
+                <button class="btn" onclick="addTopic()">
+                    <i class="ph ph-plus"></i> Adicionar Tópico
+                </button>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-success" onclick="saveData()">
+                    <i class="ph ph-floppy-disk"></i> Salvar
+                </button>
+                <button class="btn btn-danger" onclick="clearData()">
+                    <i class="ph ph-trash"></i> Apagar
+                </button>
+                <button class="btn" onclick="shareAsPDF()">
+                    <i class="ph ph-file-pdf"></i> Exportar PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="preview-container">
+            <div class="preview-controls">
+                <div class="zoom-controls">
+                    <button class="zoom-btn" onclick="zoomOut()">
+                        <i class="ph ph-minus"></i>
+                    </button>
+                    <span class="zoom-level" id="zoomLevel">100%</span>
+                    <button class="zoom-btn" onclick="zoomIn()">
+                        <i class="ph ph-plus"></i>
+                    </button>
+                </div>
+                <div style="font-weight: 600; color: #0A1E46;">Visualização do Documento</div>
+            </div>
+            
+            <div class="preview-wrapper">
+                <div class="a4-preview" id="a4Preview">
+                    <!-- Páginas serão geradas dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
