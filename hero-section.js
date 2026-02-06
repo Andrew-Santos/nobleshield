@@ -1,400 +1,441 @@
-// Hero Section Component - Noble Shield Security
+// Noble Shield Security - Hero Section
 (function() {
     'use strict';
 
-    // Injetar CSS
-    function injectStyles() {
-        const style = document.createElement('style');
-        style.textContent = `
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+    const styles = `
+        /* ===== HERO SECTION ===== */
+        .nss-hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: #000000;
+        }
 
-            body {
-                font-family: 'Barlow', sans-serif;
-                overflow-x: hidden;
-                background-color: black;
-            }
+        .nss-hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
 
-            h1, h2, h3, h4, h5, h6 {
-                font-family: 'Satoshi', sans-serif;
-            }
+        .nss-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(10, 30, 46, 0.6) 100%);
+            z-index: 2;
+        }
 
-            .header-section {
-                position: relative;
-                width: 100vw;
-                height: 100vh;
-                overflow: hidden;
-            }
+        /* ===== NAVBAR ===== */
+        .nss-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 28px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: transparent;
+            transition: all 0.4s ease;
+        }
 
-            .video-background {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                z-index: 1;
-            }
+        .nss-navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 6%;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
 
-            .overlay {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(135deg, rgba(0, 0, 0, 0.75) 0%, rgba(20, 20, 20, 0.55) 100%);
-                z-index: 2;
-            }
+        .nss-logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1002;
+        }
 
-            .navbar {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                padding: 2rem 5%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                z-index: 1000;
-            }
+        .nss-logo-img {
+            height: 70px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
 
-            .logo {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                position: relative;
-                z-index: 1001;
-            }
+        .nss-navbar.scrolled .nss-logo-img {
+            height: 55px;
+        }
 
-            .logo-image {
-                height: 65px;
-                width: auto;
-            }
+        .nss-nav-menu {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+            align-items: center;
+        }
 
-            .nav-menu {
-                display: flex;
-                gap: 3rem;
-                list-style: none;
-                position: relative;
-                z-index: 1001;
-            }
+        .nss-nav-menu li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
 
-            .nav-menu li a {
-                color: #F7F5FB;
-                text-decoration: none;
-                font-size: 1rem;
-                font-weight: 600;
-                letter-spacing: 0.5px;
-                transition: all 0.3s ease;
-                position: relative;
-            }
+        .nss-nav-menu li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #DB9D47;
+            transition: width 0.3s ease;
+        }
 
-            .nav-menu li a::after {
-                content: '';
-                position: absolute;
-                bottom: -5px;
-                left: 0;
-                width: 0;
-                height: 2px;
-                background: #C4986A;
-                transition: width 0.3s ease;
-            }
+        .nss-nav-menu li a:hover {
+            color: #DB9D47;
+        }
 
-            .nav-menu li a:hover {
-                color: #C4986A;
-            }
+        .nss-nav-menu li a:hover::after {
+            width: 100%;
+        }
 
-            .nav-menu li a:hover::after {
-                width: 100%;
-            }
+        /* ===== HERO CONTENT ===== */
+        .nss-hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 3;
+            width: 90%;
+            max-width: 1200px;
+        }
 
-            .hero-content {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                text-align: center;
-                z-index: 3;
-                width: 90%;
-                max-width: 1200px;
-            }
+        .nss-hero-title {
+            font-family: 'Satoshi', sans-serif;
+            color: #ffffff;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.5);
+        }
 
-            .impact-phrase {
-                color: #fff;
-                font-size: clamp(2.5rem, 6vw, 5rem);
-                font-weight: 800;
-                line-height: 1.2;
-                margin-bottom: 1.5rem;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
-            }
+        .nss-hero-highlight {
+            color: #DB9D47;
+            display: block;
+            margin-top: 8px;
+        }
 
-            .impact-phrase .highlight {
-                color: #C4986A;
-                display: block;
-            }
+        .nss-hero-subtitle {
+            font-family: 'Barlow', sans-serif;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 400;
+            margin-bottom: 48px;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
 
-            .subheading {
-                color: #F7F5FB;
-                font-size: clamp(1.1rem, 2vw, 1.5rem);
-                font-weight: 400;
-                margin-bottom: 3rem;
-                letter-spacing: 1px;
-                opacity: 0.95;
-            }
+        .nss-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: transparent;
+            color: #ffffff;
+            font-family: 'Barlow', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 2px solid #DB9D47;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
 
-            .cta-button {
-                display: inline-block;
-                padding: 0.9rem 2.2rem;
-                background: transparent;
-                color: #fff;
-                font-size: 0.95rem;
-                font-weight: 600;
-                text-decoration: none;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                border: 2px solid #C4986A;
-                border-radius: 4px;
-                transition: all 0.3s ease;
-            }
+        .nss-hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #DB9D47;
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
 
-            .cta-button:hover {
-                background: #C4986A;
-                color: #000;
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(196, 152, 106, 0.4);
-            }
+        .nss-hero-cta:hover::before {
+            left: 0;
+        }
 
-            .menu-toggle {
-                display: none;
-                flex-direction: column;
-                gap: 6px;
-                cursor: pointer;
-                padding: 10px;
-                z-index: 1002;
-                position: relative;
-            }
+        .nss-hero-cta:hover {
+            color: #0A1E2E;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(219, 157, 71, 0.4);
+        }
 
-            .menu-toggle span {
-                width: 30px;
-                height: 3px;
-                background: #fff;
-                border-radius: 3px;
-                transition: all 0.3s ease;
-            }
+        .nss-hero-cta i {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
 
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-            }
+        .nss-hero-cta:hover i {
+            transform: translateX(4px);
+        }
 
-            .menu-toggle.active span:nth-child(2) {
+        /* ===== MOBILE MENU ===== */
+        .nss-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1002;
+            background: transparent;
+            border: none;
+        }
+
+        .nss-menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .nss-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .nss-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nss-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        .nss-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nss-menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
                 opacity: 0;
+                transform: translate(-50%, -45%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .nss-navbar {
+                padding: 24px 5%;
             }
 
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
+            .nss-navbar.scrolled {
+                padding: 16px 5%;
             }
 
-            .menu-overlay {
-                display: none;
+            .nss-logo-img {
+                height: 55px;
+            }
+
+            .nss-navbar.scrolled .nss-logo-img {
+                height: 50px;
+            }
+
+            .nss-nav-menu {
                 position: fixed;
                 top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.7);
-                z-index: 998;
+                right: -100%;
+                height: 100vh;
+                width: 85%;
+                max-width: 400px;
+                background: rgba(0, 0, 0, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 40px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 40px;
+                z-index: 999;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .nss-nav-menu.active {
+                right: 0;
+            }
+
+            .nss-nav-menu li {
                 opacity: 0;
-                transition: opacity 0.3s ease;
+                transform: translateX(50px);
+                transition: all 0.4s ease;
             }
 
-            .menu-overlay.active {
-                display: block;
+            .nss-nav-menu.active li {
                 opacity: 1;
+                transform: translateX(0);
             }
 
-            @media (max-width: 968px) {
-                .navbar {
-                    padding: 1.5rem 5%;
-                }
+            .nss-nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
+            .nss-nav-menu.active li:nth-child(2) { transition-delay: 0.15s; }
+            .nss-nav-menu.active li:nth-child(3) { transition-delay: 0.2s; }
+            .nss-nav-menu.active li:nth-child(4) { transition-delay: 0.25s; }
 
-                .nav-menu {
-                    position: fixed;
-                    top: 0;
-                    right: -100%;
-                    height: 100vh;
-                    width: 80%;
-                    max-width: 400px;
-                    background: rgba(0, 0, 0, 0.98);
-                    backdrop-filter: blur(10px);
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    gap: 3rem;
-                    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                    padding: 2rem;
-                    z-index: 999;
-                }
-
-                .nav-menu.active {
-                    right: 0;
-                }
-
-                .nav-menu li {
-                    opacity: 0;
-                    transform: translateX(50px);
-                    transition: all 0.3s ease;
-                }
-
-                .nav-menu.active li {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-
-                .nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
-                .nav-menu.active li:nth-child(2) { transition-delay: 0.2s; }
-                .nav-menu.active li:nth-child(3) { transition-delay: 0.3s; }
-                .nav-menu.active li:nth-child(4) { transition-delay: 0.4s; }
-                .nav-menu.active li:nth-child(5) { transition-delay: 0.5s; }
-
-                .nav-menu li a {
-                    font-size: 1.5rem;
-                    padding: 1rem 0;
-                }
-
-                .menu-toggle {
-                    display: flex;
-                }
-
-                .logo-image {
-                    height: 50px;
-                }
-
-                .impact-phrase {
-                    margin-bottom: 1rem;
-                }
-
-                .subheading {
-                    margin-bottom: 2rem;
-                    font-size: 1rem;
-                }
-
-                .cta-button {
-                    padding: 0.8rem 1.8rem;
-                    font-size: 0.9rem;
-                }
+            .nss-nav-menu li a {
+                font-size: 22px;
+                padding: 12px 0;
             }
 
-            @media (max-width: 480px) {
-                .nav-menu {
-                    width: 100%;
-                }
-
-                .logo-image {
-                    height: 40px;
-                }
-
-                .impact-phrase {
-                    font-size: 2rem;
-                }
-
-                .subheading {
-                    font-size: 0.95rem;
-                }
+            .nss-menu-toggle {
+                display: flex;
             }
 
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    top: 52%;
-                }
-                to {
-                    opacity: 1;
-                    top: 50%;
-                }
+            .nss-hero-title {
+                margin-bottom: 20px;
             }
 
-            .hero-content {
-                animation: fadeInUp 0.6s ease-out;
-                animation-fill-mode: both;
+            .nss-hero-subtitle {
+                margin-bottom: 36px;
             }
 
-            html {
-                scroll-behavior: smooth;
+            .nss-hero-cta {
+                padding: 16px 32px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nss-nav-menu {
+                width: 100%;
             }
 
-            body.menu-open {
-                overflow: hidden;
+            .nss-logo-img {
+                height: 45px;
             }
-        `;
+
+            .nss-hero-title {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .nss-hero-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .nss-hero-cta {
+                width: 90%;
+                justify-content: center;
+            }
+        }
+    `;
+
+    function injectStyles() {
+        const style = document.createElement('style');
+        style.textContent = styles;
         document.head.appendChild(style);
     }
 
-    // Criar estrutura HTML
     function createHeroSection() {
         const root = document.getElementById('root');
         
         const heroHTML = `
-            <header class="header-section">
-                <!-- Video Background -->
-                <video class="video-background" autoplay muted loop playsinline>
+            <section class="nss-hero" id="home">
+                <video class="nss-hero-video" autoplay muted loop playsinline>
                     <source src="security-video.mp4" type="video/mp4">
                     Seu navegador não suporta vídeo HTML5.
                 </video>
 
-                <!-- Overlay -->
-                <div class="overlay"></div>
+                <div class="nss-hero-overlay"></div>
+                <div class="nss-menu-overlay" id="menuOverlay"></div>
 
-                <!-- Overlay do Menu Mobile -->
-                <div class="menu-overlay" id="menuOverlay"></div>
-
-                <!-- Navigation -->
-                <nav class="navbar">
-                    <div class="logo">
-                        <img src="./logo.svg" alt="Noble Shield Security" class="logo-image">
+                <nav class="nss-navbar" id="navbar">
+                    <div class="nss-logo">
+                        <img src="./logo.svg" alt="Noble Shield Security" class="nss-logo-img">
                     </div>
 
-                    <ul class="nav-menu" id="navMenu">
+                    <ul class="nss-nav-menu" id="navMenu">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#servicos">Serviços</a></li>
                         <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#consultoria">Consultoria</a></li>
                         <li><a href="#contato">Contato</a></li>
                     </ul>
 
-                    <div class="menu-toggle" id="menuToggle">
+                    <button class="nss-menu-toggle" id="menuToggle" aria-label="Menu">
                         <span></span>
                         <span></span>
                         <span></span>
-                    </div>
+                    </button>
                 </nav>
 
-                <!-- Hero Content -->
-                <div class="hero-content">
-                    <h1 class="impact-phrase">
+                <div class="nss-hero-content">
+                    <h1 class="nss-hero-title">
                         Protegendo o que
-                        <span class="highlight">Realmente Importa</span>
+                        <span class="nss-hero-highlight">Realmente Importa</span>
                     </h1>
-                    <p class="subheading">
+                    <p class="nss-hero-subtitle">
                         Excelência em segurança, facilities e gestão operacional para o seu negócio
                     </p>
-                    <a href="#contato" class="cta-button">Solicite uma Consultoria</a>
+                    <a href="https://wa.me/5511964448112?text=Olá!%20Gostaria%20de%20saber%20como%20a%20Noble%20Shield%20Security%20pode%20ajudar%20com%20minha%20necessidade%20em%20segurança%20e%20facilities.%20Poderiam%20me%20orientar,%20por%20favor?" 
+                       class="nss-hero-cta" 
+                       target="_blank">
+                        Solicite uma Consultoria
+                        <i class="ph ph-arrow-right"></i>
+                    </a>
                 </div>
-            </header>
+            </section>
         `;
 
         root.innerHTML = heroHTML;
     }
 
-    // Inicializar interações
     function initInteractions() {
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
         const menuOverlay = document.getElementById('menuOverlay');
+        const navbar = document.getElementById('navbar');
         const body = document.body;
 
         function toggleMenu() {
@@ -411,42 +452,61 @@
             body.classList.remove('menu-open');
         }
 
-        // Toggle menu ao clicar no botão
-        menuToggle.addEventListener('click', toggleMenu);
+        if (menuToggle) {
+            menuToggle.addEventListener('click', toggleMenu);
+        }
 
-        // Fechar menu ao clicar no overlay
-        menuOverlay.addEventListener('click', closeMenu);
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', closeMenu);
+        }
 
-        // Fechar menu ao clicar em um link
-        const navLinks = document.querySelectorAll('.nav-menu a');
+        const navLinks = document.querySelectorAll('.nss-nav-menu a');
         navLinks.forEach(link => {
             link.addEventListener('click', closeMenu);
         });
 
-        // Fechar menu ao pressionar ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && navMenu.classList.contains('active')) {
                 closeMenu();
             }
         });
 
-        // Prevenir scroll do vídeo em alguns navegadores
-        const video = document.querySelector('.video-background');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        const video = document.querySelector('.nss-hero-video');
         if (video) {
             video.addEventListener('loadedmetadata', function() {
                 this.playbackRate = 1;
             });
+
+            document.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play().catch(err => console.log('Video autoplay prevented'));
+                }
+            }, { once: true });
         }
     }
 
-    // Inicializar aplicação
     function init() {
         injectStyles();
         createHeroSection();
-        initInteractions();
+        
+        setTimeout(() => {
+            initInteractions();
+        }, 100);
     }
 
-    // Executar quando o DOM estiver pronto
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
