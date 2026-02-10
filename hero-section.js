@@ -1,9 +1,27 @@
-// Noble Shield Security - Hero Section
+// Noble Shield Security - Hero Section (Versão Otimizada Mobile)
 (function() {
     'use strict';
 
     const styles = `
-        /* ===== HERO SECTION ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Satoshi', sans-serif;
+        }
+
         .nss-hero {
             position: relative;
             width: 100%;
@@ -35,13 +53,12 @@
             z-index: 2;
         }
 
-        /* ===== NAVBAR ===== */
         .nss-navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 28px 6%;
+            padding: 24px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,7 +70,7 @@
         .nss-navbar.scrolled {
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
-            padding: 20px 6%;
+            padding: 18px 6%;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         }
 
@@ -65,18 +82,18 @@
         }
 
         .nss-logo-img {
-            height: 70px;
+            height: 60px;
             width: auto;
             transition: all 0.3s ease;
         }
 
         .nss-navbar.scrolled .nss-logo-img {
-            height: 55px;
+            height: 50px;
         }
 
         .nss-nav-menu {
             display: flex;
-            gap: 48px;
+            gap: 40px;
             list-style: none;
             align-items: center;
         }
@@ -84,7 +101,7 @@
         .nss-nav-menu li a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
@@ -111,7 +128,6 @@
             width: 100%;
         }
 
-        /* ===== HERO CONTENT ===== */
         .nss-hero-content {
             position: absolute;
             top: 50%;
@@ -121,17 +137,17 @@
             z-index: 3;
             width: 90%;
             max-width: 1200px;
+            animation: fadeInUp 1s ease-out;
         }
 
         .nss-hero-title {
-            font-family: 'Satoshi', sans-serif;
             color: #ffffff;
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-size: clamp(2rem, 5vw, 4.5rem);
             font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 24px;
+            line-height: 1.2;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.5);
         }
 
@@ -142,28 +158,26 @@
         }
 
         .nss-hero-subtitle {
-            font-family: 'Barlow', sans-serif;
             color: rgba(255, 255, 255, 0.95);
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-size: clamp(0.95rem, 1.8vw, 1.3rem);
             font-weight: 400;
-            margin-bottom: 48px;
-            letter-spacing: 0.5px;
+            margin-bottom: 36px;
+            letter-spacing: 0.3px;
             line-height: 1.6;
         }
 
         .nss-hero-cta {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 18px 40px;
+            gap: 10px;
+            padding: 16px 36px;
             background: transparent;
             color: #ffffff;
-            font-family: 'Barlow', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             border: 2px solid #DB9D47;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -193,7 +207,7 @@
         }
 
         .nss-hero-cta i {
-            font-size: 20px;
+            font-size: 18px;
             transition: transform 0.3s ease;
         }
 
@@ -201,28 +215,27 @@
             transform: translateX(4px);
         }
 
-        /* ===== MOBILE MENU ===== */
         .nss-menu-toggle {
             display: none;
             flex-direction: column;
-            gap: 6px;
+            gap: 5px;
             cursor: pointer;
-            padding: 10px;
+            padding: 8px;
             z-index: 1002;
             background: transparent;
             border: none;
         }
 
         .nss-menu-toggle span {
-            width: 28px;
-            height: 3px;
+            width: 26px;
+            height: 2.5px;
             background: #ffffff;
             border-radius: 3px;
             transition: all 0.3s ease;
         }
 
         .nss-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
         .nss-menu-toggle.active span:nth-child(2) {
@@ -230,7 +243,7 @@
         }
 
         .nss-menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         .nss-menu-overlay {
@@ -255,7 +268,6 @@
             overflow: hidden;
         }
 
-        /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -267,22 +279,21 @@
             }
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 968px) {
             .nss-navbar {
-                padding: 24px 5%;
+                padding: 20px 5%;
             }
 
             .nss-navbar.scrolled {
-                padding: 16px 5%;
+                padding: 14px 5%;
             }
 
             .nss-logo-img {
-                height: 55px;
+                height: 48px;
             }
 
             .nss-navbar.scrolled .nss-logo-img {
-                height: 50px;
+                height: 44px;
             }
 
             .nss-nav-menu {
@@ -290,16 +301,16 @@
                 top: 0;
                 right: -100%;
                 height: 100vh;
-                width: 85%;
-                max-width: 400px;
+                width: 80%;
+                max-width: 360px;
                 background: rgba(0, 0, 0, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 40px;
+                gap: 32px;
                 transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                padding: 40px;
+                padding: 32px;
                 z-index: 999;
                 box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
             }
@@ -325,8 +336,8 @@
             .nss-nav-menu.active li:nth-child(4) { transition-delay: 0.25s; }
 
             .nss-nav-menu li a {
-                font-size: 22px;
-                padding: 12px 0;
+                font-size: 18px;
+                padding: 10px 0;
             }
 
             .nss-menu-toggle {
@@ -334,16 +345,18 @@
             }
 
             .nss-hero-title {
-                margin-bottom: 20px;
+                margin-bottom: 16px;
+                letter-spacing: 1px;
             }
 
             .nss-hero-subtitle {
-                margin-bottom: 36px;
+                margin-bottom: 28px;
             }
 
             .nss-hero-cta {
-                padding: 16px 32px;
-                font-size: 14px;
+                padding: 14px 28px;
+                font-size: 13px;
+                letter-spacing: 1px;
             }
         }
 
@@ -353,21 +366,30 @@
             }
 
             .nss-logo-img {
-                height: 45px;
+                height: 42px;
+            }
+
+            .nss-navbar.scrolled .nss-logo-img {
+                height: 38px;
             }
 
             .nss-hero-title {
-                font-size: 2rem;
-                letter-spacing: 1px;
+                font-size: 1.75rem;
+                letter-spacing: 0.5px;
             }
 
             .nss-hero-subtitle {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
 
             .nss-hero-cta {
-                width: 90%;
+                width: 88%;
                 justify-content: center;
+                padding: 13px 24px;
+            }
+
+            .nss-nav-menu li a {
+                font-size: 16px;
             }
         }
     `;
@@ -383,14 +405,19 @@
         
         const heroHTML = `
             <section class="nss-hero" id="home">
+                <!-- Video Background -->
                 <video class="nss-hero-video" autoplay muted loop playsinline>
                     <source src="security-video.mp4" type="video/mp4">
                     Seu navegador não suporta vídeo HTML5.
                 </video>
 
+                <!-- Overlay -->
                 <div class="nss-hero-overlay"></div>
+
+                <!-- Overlay do Menu Mobile -->
                 <div class="nss-menu-overlay" id="menuOverlay"></div>
 
+                <!-- Navigation -->
                 <nav class="nss-navbar" id="navbar">
                     <div class="nss-logo">
                         <img src="./logo.svg" alt="Noble Shield Security" class="nss-logo-img">
@@ -410,6 +437,7 @@
                     </button>
                 </nav>
 
+                <!-- Hero Content -->
                 <div class="nss-hero-content">
                     <h1 class="nss-hero-title">
                         Protegendo o que
@@ -438,6 +466,7 @@
         const navbar = document.getElementById('navbar');
         const body = document.body;
 
+        // Toggle Menu
         function toggleMenu() {
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active');
@@ -445,6 +474,7 @@
             body.classList.toggle('menu-open');
         }
 
+        // Close Menu
         function closeMenu() {
             navMenu.classList.remove('active');
             menuToggle.classList.remove('active');
@@ -452,25 +482,32 @@
             body.classList.remove('menu-open');
         }
 
+        // Menu Toggle Click
         if (menuToggle) {
             menuToggle.addEventListener('click', toggleMenu);
         }
 
+        // Menu Overlay Click
         if (menuOverlay) {
             menuOverlay.addEventListener('click', closeMenu);
         }
 
+        // Nav Links Click
         const navLinks = document.querySelectorAll('.nss-nav-menu a');
         navLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
+            link.addEventListener('click', (e) => {
+                closeMenu();
+            });
         });
 
+        // ESC Key Close Menu
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && navMenu.classList.contains('active')) {
                 closeMenu();
             }
         });
 
+        // Navbar Scroll Effect
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
@@ -484,12 +521,14 @@
             lastScroll = currentScroll;
         });
 
+        // Video Autoplay Fix
         const video = document.querySelector('.nss-hero-video');
         if (video) {
             video.addEventListener('loadedmetadata', function() {
                 this.playbackRate = 1;
             });
 
+            // Force play on user interaction
             document.addEventListener('click', () => {
                 if (video.paused) {
                     video.play().catch(err => console.log('Video autoplay prevented'));
@@ -502,6 +541,7 @@
         injectStyles();
         createHeroSection();
         
+        // Wait for DOM to be fully ready
         setTimeout(() => {
             initInteractions();
         }, 100);

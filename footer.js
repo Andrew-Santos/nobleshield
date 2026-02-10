@@ -1,12 +1,11 @@
-// Noble Shield Security - Footer
+// Noble Shield Security - Footer (Versão Otimizada Mobile)
 (function() {
     'use strict';
 
     const styles = `
-        /* ===== FOOTER ===== */
         .nss-footer {
             background: #000000;
-            padding: 80px 6% 0;
+            padding: 70px 6% 0;
             color: #ffffff;
         }
 
@@ -15,48 +14,45 @@
             margin: 0 auto;
         }
 
-        /* Content Grid */
         .nss-footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            padding-bottom: 60px;
+            gap: 50px;
+            padding-bottom: 50px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Brand */
         .nss-footer-brand {
             max-width: 350px;
         }
 
         .nss-footer-logo {
-            height: 60px;
-            margin-bottom: 24px;
+            height: 50px;
+            margin-bottom: 20px;
         }
 
         .nss-footer-description {
             font-family: 'Barlow', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
-            line-height: 1.7;
-            margin-bottom: 24px;
+            line-height: 1.65;
+            margin-bottom: 20px;
         }
 
-        /* Social Links */
         .nss-footer-social {
             display: flex;
-            gap: 16px;
+            gap: 14px;
         }
 
         .nss-social-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: rgba(255, 255, 255, 0.05);
             color: #DB9D47;
-            font-size: 20px;
+            font-size: 18px;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -67,13 +63,12 @@
             transform: translateY(-3px);
         }
 
-        /* Columns */
-        .nss-footer-column-title {
+        .nss-footer-column h4 {
             font-family: 'Satoshi', sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: #DB9D47;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .nss-footer-links {
@@ -83,12 +78,12 @@
         }
 
         .nss-footer-links li {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .nss-footer-links a {
             font-family: 'Barlow', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: all 0.3s ease;
@@ -100,27 +95,25 @@
             transform: translateX(4px);
         }
 
-        /* Contact */
         .nss-footer-contact p {
             font-family: 'Barlow', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            margin-bottom: 12px;
+            line-height: 1.7;
+            margin-bottom: 10px;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 8px;
         }
 
         .nss-footer-contact i {
             color: #DB9D47;
-            font-size: 18px;
+            font-size: 16px;
             margin-top: 2px;
         }
 
-        /* Bottom */
         .nss-footer-bottom {
-            padding: 32px 0;
+            padding: 28px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -128,13 +121,13 @@
 
         .nss-footer-copyright {
             font-family: 'Barlow', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             color: rgba(255, 255, 255, 0.5);
         }
 
         .nss-footer-credits {
             font-family: 'Barlow', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             color: rgba(255, 255, 255, 0.5);
         }
 
@@ -149,11 +142,10 @@
             color: #ffffff;
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .nss-footer-content {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
+                gap: 36px;
             }
 
             .nss-footer-brand {
@@ -163,25 +155,90 @@
 
         @media (max-width: 768px) {
             .nss-footer {
-                padding: 60px 5% 0;
+                padding: 50px 5% 0;
             }
 
             .nss-footer-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
-                padding-bottom: 40px;
+                gap: 32px;
+                padding-bottom: 36px;
+            }
+
+            .nss-footer-logo {
+                height: 44px;
+                margin-bottom: 16px;
+            }
+
+            .nss-footer-description {
+                font-size: 13px;
+                margin-bottom: 16px;
+            }
+
+            .nss-footer-social {
+                gap: 12px;
+            }
+
+            .nss-social-link {
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+
+            .nss-footer-column h4 {
+                font-size: 15px;
+                margin-bottom: 16px;
+            }
+
+            .nss-footer-links li {
+                margin-bottom: 10px;
+            }
+
+            .nss-footer-links a {
+                font-size: 13px;
+            }
+
+            .nss-footer-contact p {
+                font-size: 13px;
+                margin-bottom: 8px;
+            }
+
+            .nss-footer-contact i {
+                font-size: 15px;
             }
 
             .nss-footer-bottom {
                 flex-direction: column;
-                gap: 16px;
+                gap: 14px;
                 text-align: center;
-                padding: 24px 0;
+                padding: 22px 0;
             }
 
             .nss-footer-copyright,
             .nss-footer-credits {
-                font-size: 13px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nss-footer {
+                padding: 40px 5% 0;
+            }
+
+            .nss-footer-content {
+                gap: 28px;
+            }
+
+            .nss-footer-logo {
+                height: 40px;
+            }
+
+            .nss-footer-column h4 {
+                font-size: 14px;
+            }
+
+            .nss-footer-copyright,
+            .nss-footer-credits {
+                font-size: 11px;
             }
         }
     `;
@@ -195,7 +252,6 @@
     function createFooter() {
         const footer = document.createElement('footer');
         footer.className = 'nss-footer';
-        footer.id = 'contato';
 
         const container = document.createElement('div');
         container.className = 'nss-footer-container';
@@ -222,7 +278,7 @@
                 </div>
 
                 <div class="nss-footer-column">
-                    <h4 class="nss-footer-column-title">Navegação</h4>
+                    <h4>Navegação</h4>
                     <ul class="nss-footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#servicos">Serviços</a></li>
@@ -232,7 +288,7 @@
                 </div>
 
                 <div class="nss-footer-column">
-                    <h4 class="nss-footer-column-title">Serviços</h4>
+                    <h4>Serviços</h4>
                     <ul class="nss-footer-links">
                         <li><a href="#servicos">Segurança Patrimonial</a></li>
                         <li><a href="#servicos">Segurança VIP</a></li>
@@ -242,14 +298,14 @@
                 </div>
 
                 <div class="nss-footer-column nss-footer-contact">
-                    <h4 class="nss-footer-column-title">Contato</h4>
+                    <h4>Contato</h4>
                     <p>
                         <i class="ph ph-phone"></i>
                         (11) 96444-8112
                     </p>
                     <p>
                         <i class="ph ph-envelope"></i>
-                        contato@nobleshield.com.br
+                        contato@nobleshieldsecurity.com
                     </p>
                     <p>
                         <i class="ph ph-map-pin"></i>

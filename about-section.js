@@ -1,12 +1,11 @@
-// Noble Shield Security - Sobre
+// Noble Shield Security - Sobre (Versão Otimizada Mobile)
 (function() {
     'use strict';
 
     const styles = `
-        /* ===== ABOUT SECTION ===== */
         .nss-about {
             background: #0A1E2E;
-            padding: 120px 6%;
+            padding: 100px 6%;
             position: relative;
             overflow: hidden;
         }
@@ -29,103 +28,100 @@
             z-index: 1;
         }
 
-        /* Header */
         .nss-about-header {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 80px;
+            margin: 0 auto 70px;
         }
 
         .nss-about-tag {
             font-family: 'Barlow', sans-serif;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             color: #DB9D47;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
+            letter-spacing: 2.5px;
+            margin-bottom: 16px;
             display: inline-block;
         }
 
         .nss-about-title {
             font-family: 'Satoshi', sans-serif;
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 24px;
-            line-height: 1.2;
-            letter-spacing: -1px;
+            margin-bottom: 20px;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
         }
 
         .nss-about-intro {
             font-family: 'Barlow', sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
-        /* Content Cards */
         .nss-about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 80px;
+            gap: 32px;
+            margin-bottom: 70px;
         }
 
         .nss-content-card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 48px 40px;
-            border-left: 4px solid #DB9D47;
+            padding: 40px 34px;
+            border-left: 3px solid #DB9D47;
             backdrop-filter: blur(10px);
             transition: all 0.4s ease;
         }
 
         .nss-content-card:hover {
             background: rgba(255, 255, 255, 0.08);
-            transform: translateX(8px);
+            transform: translateX(6px);
         }
 
-        .nss-content-card-title {
+        .nss-content-card h3 {
             font-family: 'Satoshi', sans-serif;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
             color: #DB9D47;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
-        .nss-content-card-text {
+        .nss-content-card p {
             font-family: 'Barlow', sans-serif;
-            font-size: 16px;
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.85);
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
-        /* Specialties */
         .nss-specialties {
             background: rgba(255, 255, 255, 0.03);
-            padding: 60px 50px;
+            padding: 50px 40px;
             border: 1px solid rgba(219, 157, 71, 0.2);
         }
 
         .nss-specialties-title {
             font-family: 'Satoshi', sans-serif;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             text-align: center;
         }
 
         .nss-specialties-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
+            gap: 28px;
         }
 
         .nss-specialty-item {
             display: flex;
-            gap: 24px;
-            padding: 32px;
+            gap: 20px;
+            padding: 28px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -134,83 +130,82 @@
         .nss-specialty-item:hover {
             background: rgba(219, 157, 71, 0.1);
             border-color: #DB9D47;
-            transform: translateY(-4px);
+            transform: translateY(-3px);
         }
 
         .nss-specialty-icon {
-            font-size: 42px;
+            font-size: 36px;
             color: #DB9D47;
             flex-shrink: 0;
             transition: transform 0.4s ease;
         }
 
         .nss-specialty-item:hover .nss-specialty-icon {
-            transform: scale(1.1) rotate(-5deg);
+            transform: scale(1.08) rotate(-5deg);
         }
 
-        .nss-specialty-content-title {
+        .nss-specialty-content h4 {
             font-family: 'Satoshi', sans-serif;
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 600;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        .nss-specialty-content-text {
+        .nss-specialty-content p {
             font-family: 'Barlow', sans-serif;
-            font-size: 15px;
+            font-size: 13px;
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
         }
 
-        /* CTA */
         .nss-about-cta {
-            margin-top: 80px;
+            margin-top: 70px;
             text-align: center;
-            padding: 60px 40px;
+            padding: 50px 34px;
             background: linear-gradient(135deg, rgba(219, 157, 71, 0.15) 0%, rgba(219, 157, 71, 0.05) 100%);
             border: 2px solid rgba(219, 157, 71, 0.3);
         }
 
-        .nss-about-cta-title {
+        .nss-about-cta h3 {
             font-family: 'Satoshi', sans-serif;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
-        .nss-about-cta-text {
+        .nss-about-cta p {
             font-family: 'Barlow', sans-serif;
-            font-size: 17px;
+            font-size: 15px;
             color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         .nss-about-cta-button {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 18px 40px;
+            gap: 10px;
+            padding: 16px 36px;
             background: #DB9D47;
             color: #0A1E2E;
             font-family: 'Barlow', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             transition: all 0.4s ease;
         }
 
         .nss-about-cta-button:hover {
             background: #C4986A;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(219, 157, 71, 0.4);
+            box-shadow: 0 6px 20px rgba(219, 157, 71, 0.4);
         }
 
         .nss-about-cta-icon {
-            font-size: 20px;
+            font-size: 18px;
             transition: transform 0.3s ease;
         }
 
@@ -218,18 +213,17 @@
             transform: translateX(4px);
         }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .nss-about {
-                padding: 100px 5%;
+                padding: 80px 5%;
             }
 
             .nss-about-title {
-                font-size: 40px;
+                font-size: 36px;
             }
 
             .nss-about-content {
-                gap: 32px;
+                gap: 28px;
             }
 
             .nss-specialties-grid {
@@ -239,53 +233,147 @@
 
         @media (max-width: 768px) {
             .nss-about {
-                padding: 80px 5%;
+                padding: 60px 5%;
+            }
+
+            .nss-about-header {
+                margin-bottom: 50px;
+            }
+
+            .nss-about-tag {
+                font-size: 11px;
+                letter-spacing: 2px;
+                margin-bottom: 12px;
             }
 
             .nss-about-title {
-                font-size: 34px;
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+
+            .nss-about-intro {
+                font-size: 14px;
+                line-height: 1.6;
             }
 
             .nss-about-content {
                 grid-template-columns: 1fr;
-                gap: 24px;
-                margin-bottom: 60px;
+                gap: 20px;
+                margin-bottom: 50px;
             }
 
             .nss-content-card {
-                padding: 36px 28px;
+                padding: 28px 24px;
+            }
+
+            .nss-content-card h3 {
+                font-size: 19px;
+                margin-bottom: 12px;
+            }
+
+            .nss-content-card p {
+                font-size: 13px;
             }
 
             .nss-specialties {
-                padding: 40px 28px;
+                padding: 36px 24px;
             }
 
             .nss-specialties-title {
-                font-size: 28px;
-                margin-bottom: 40px;
+                font-size: 24px;
+                margin-bottom: 32px;
             }
 
             .nss-specialties-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 18px;
             }
 
             .nss-specialty-item {
-                padding: 24px;
+                padding: 22px;
+                gap: 16px;
+            }
+
+            .nss-specialty-icon {
+                font-size: 30px;
+            }
+
+            .nss-specialty-content h4 {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+
+            .nss-specialty-content p {
+                font-size: 12px;
             }
 
             .nss-about-cta {
-                padding: 40px 28px;
-                margin-top: 60px;
+                padding: 36px 24px;
+                margin-top: 50px;
             }
 
-            .nss-about-cta-title {
-                font-size: 26px;
+            .nss-about-cta h3 {
+                font-size: 22px;
+                margin-bottom: 12px;
+            }
+
+            .nss-about-cta p {
+                font-size: 14px;
+                margin-bottom: 24px;
             }
 
             .nss-about-cta-button {
                 width: 100%;
                 justify-content: center;
+                padding: 14px 28px;
+                font-size: 13px;
+                letter-spacing: 1px;
+            }
+
+            .nss-about-cta-icon {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nss-about {
+                padding: 50px 5%;
+            }
+
+            .nss-about-title {
+                font-size: 24px;
+            }
+
+            .nss-content-card {
+                padding: 24px 20px;
+            }
+
+            .nss-content-card h3 {
+                font-size: 17px;
+            }
+
+            .nss-specialties {
+                padding: 30px 20px;
+            }
+
+            .nss-specialties-title {
+                font-size: 21px;
+            }
+
+            .nss-specialty-item {
+                padding: 20px;
+            }
+
+            .nss-specialty-icon {
+                font-size: 28px;
+            }
+
+            .nss-about-cta {
+                padding: 30px 20px;
+            }
+
+            .nss-about-cta h3 {
+                font-size: 20px;
             }
         }
     `;
@@ -357,8 +445,8 @@
             const card = document.createElement('div');
             card.className = 'nss-content-card';
             card.innerHTML = `
-                <h3 class="nss-content-card-title">${item.title}</h3>
-                <p class="nss-content-card-text">${item.text}</p>
+                <h3>${item.title}</h3>
+                <p>${item.text}</p>
             `;
             contentDiv.appendChild(card);
         });
@@ -379,8 +467,8 @@
             item.innerHTML = `
                 <i class="ph ${specialty.icon} nss-specialty-icon"></i>
                 <div class="nss-specialty-content">
-                    <h4 class="nss-specialty-content-title">${specialty.name}</h4>
-                    <p class="nss-specialty-content-text">${specialty.description}</p>
+                    <h4>${specialty.name}</h4>
+                    <p>${specialty.description}</p>
                 </div>
             `;
             specialtiesGrid.appendChild(item);
@@ -392,8 +480,8 @@
         const ctaSection = document.createElement('div');
         ctaSection.className = 'nss-about-cta';
         ctaSection.innerHTML = `
-            <h3 class="nss-about-cta-title">Pronto para Tomar Decisões com Mais Segurança?</h3>
-            <p class="nss-about-cta-text">Conte com nossa inteligência investigativa e proteção profissional para seu negócio.</p>
+            <h3>Pronto para Tomar Decisões com Mais Segurança?</h3>
+            <p>Conte com nossa inteligência investigativa e proteção profissional para seu negócio.</p>
             <a href="https://wa.me/5511964448112?text=Olá!%20Gostaria%20de%20conhecer%20as%20soluções%20de%20segurança%20da%20Noble%20Shield." class="nss-about-cta-button" target="_blank">
                 Fale Conosco Agora
                 <i class="ph ph-whatsapp-logo nss-about-cta-icon"></i>
